@@ -1,0 +1,21 @@
+{
+        "acknowledged": false,
+        "contacts": [
+            "test@akamai.com",
+            "test2@akamai.com"
+        ],
+        "currentCidrs": [
+            "131.103.136.0/24", "131.103.137.0/24",
+            "165.254.127.0/24", "165.254.137.0/24", "184.25.254.0/24"
+        ],
+        "proposedCidrs": [
+            "107.14.42.0/24", "117.103.188.0/24", "195.59.54.0/24",
+            "209.211.216.0/24", "216.246.75.0/24"
+        ],
+        "ruleName": "a;s36.akamai.net",
+        "type": "Production",
+        "service": "S",
+        "shared": false,
+        "acknowledgeRequiredBy": 1392154239000,
+        "previouslyAcknowledgedOn": 1392154239000
+}

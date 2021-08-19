@@ -138,6 +138,8 @@ At this point in the setup, you should refer to the guides for the Akamai module
 | **Identity and Access Management** | [Identity and Access Management Module Guide](https://registry.terraform.io/providers/akamai/akamai/latest/docs/guides/get_started_iam) |
 | **Network Lists** | [Network Lists Module Guide](https://registry.terraform.io/providers/akamai/akamai/latest/docs/guides/get_started_networklists) |
 | **Property Provisioning** | [Property Provisioning Module Guide](https://registry.terraform.io/providers/akamai/akamai/latest/docs/guides/get_started_property) |
+| **Site Shield Maps** | [Site Shield Maps Module Guide](https://registry.terraform.io/providers/akamai/akamai/latest/docs/guides/get_started_siteshield) |
+
 
 -> **Note** Both Terraform and the Akamai Terraform CLI package come
 pre-installed in the Akamai Development Environment. See [Set Up a Development Environment](https://developer.akamai.com/blog/2020/05/26/set-development-environment) for more information.
