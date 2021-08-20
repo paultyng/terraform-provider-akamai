@@ -1,0 +1,98 @@
+{
+    "name": "Augment insights",
+    "children": [
+        {
+            "name": "Traffic reporting",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "cpCode",
+                    "options": {
+                        "value": {
+                            "id": "${env.cpcode}",
+                            "description": "jaescalo - DSA/ION & NetStorage",
+                            "products": [
+                                "Fresca",
+                                "Site_Accel"
+                            ],
+                            "createdDate": 1442260495000,
+                            "cpCodeLimits": null,
+                            "name": "jaescalo - DSA/ION & NetStorage"
+                        }
+                    }
+                }
+            ],
+            "criteria": [],
+            "criteriaMustSatisfy": "all",
+            "comments": "Identify your main traffic segments so you can granularly zoom in your traffic statistics like hits, bandwidth, offload, response codes, and errors."
+        },
+        {
+            "name": "mPulse RUM",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "mPulse",
+                    "options": {
+                        "apiKey": "",
+                        "bufferSize": "",
+                        "configOverride": "",
+                        "enabled": true,
+                        "loaderVersion": "V12",
+                        "requirePci": false,
+                        "titleOptional": ""
+                    }
+                }
+            ],
+            "criteria": [],
+            "criteriaMustSatisfy": "all",
+            "comments": "Collect and analyze real-user data to monitor the performance of your website."
+        },
+        {
+            "name": "Geolocation",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "edgeScape",
+                    "options": {
+                        "enabled": false
+                    }
+                }
+            ],
+            "criteria": [
+                {
+                    "name": "requestType",
+                    "options": {
+                        "matchOperator": "IS",
+                        "value": "CLIENT_REQ"
+                    }
+                }
+            ],
+            "criteriaMustSatisfy": "all",
+            "comments": "Receive data about a user's geolocation and connection speed in a request header. If you change cached content based on the values of the X-Akamai-Edgescape request header, contact your account representative."
+        },
+        {
+            "name": "Log delivery",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "report",
+                    "options": {
+                        "logAcceptLanguage": false,
+                        "logCookies": "OFF",
+                        "logCustomLogField": false,
+                        "logHost": false,
+                        "logReferer": false,
+                        "logUserAgent": false
+                    }
+                }
+            ],
+            "criteria": [],
+            "criteriaMustSatisfy": "all",
+            "comments": "Specify the level of detail you want to be logged in your Log Delivery Service reports. Log User-Agent Header to obtain detailed information in the Traffic by Browser and OS report."
+        }
+    ],
+    "behaviors": [],
+    "criteria": [],
+    "criteriaMustSatisfy": "all",
+    "comments": "Control the settings related to monitoring and reporting. This gives you additional visibility into your traffic and audiences."
+}

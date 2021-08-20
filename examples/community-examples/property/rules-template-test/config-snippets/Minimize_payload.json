@@ -1,0 +1,58 @@
+{
+    "name": "Minimize payload",
+    "children": [
+        {
+            "name": "Compressible objects",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "gzipResponse",
+                    "options": {
+                        "behavior": "ALWAYS"
+                    }
+                }
+            ],
+            "criteria": [
+                {
+                    "name": "contentType",
+                    "options": {
+                        "matchCaseSensitive": false,
+                        "matchOperator": "IS_ONE_OF",
+                        "matchWildcard": true,
+                        "values": [
+                            "application/*javascript*",
+                            "application/*json*",
+                            "application/*xml*",
+                            "application/text*",
+                            "application/vnd-ms-fontobject",
+                            "application/vnd.microsoft.icon",
+                            "application/x-font-opentype",
+                            "application/x-font-truetype",
+                            "application/x-font-ttf",
+                            "application/xmlfont/eot",
+                            "font/eot",
+                            "font/opentype",
+                            "font/otf",
+                            "image/svg+xml",
+                            "image/vnd.microsoft.icon",
+                            "image/x-icon",
+                            "text/*",
+                            "application/octet-stream*",
+                            "application/x-font-eot*",
+                            "font/ttf",
+                            "application/font-ttf",
+                            "application/font-sfnt",
+                            "application/x-tgif"
+                        ]
+                    }
+                }
+            ],
+            "criteriaMustSatisfy": "all",
+            "comments": "Serve gzip compressed content for text-based formats."
+        }
+    ],
+    "behaviors": [],
+    "criteria": [],
+    "criteriaMustSatisfy": "all",
+    "comments": "Control the settings that reduce the size of the delivered content and decrease the number of bytes sent by your properties. This allows you to cut down the network overhead of your website or API."
+}

@@ -1,0 +1,47 @@
+{
+    "rules": {
+        "name": "default",
+        "children": [
+            "#include:Augment_insights.json",
+            "#include:Accelerate_delivery.json",
+            "#include:Offload_origin.json",
+            "#include:Strengthen_security.json",
+            "#include:Increase_availability.json",
+            "#include:Minimize_payload.json"
+        ],
+        "behaviors": [
+            {
+                "name": "origin",
+                "options": {
+                    "cacheKeyHostname": "REQUEST_HOST_HEADER",
+                    "compress": true,
+                    "enableTrueClientIp": true,
+                    "forwardHostHeader": "REQUEST_HOST_HEADER",
+                    "httpPort": 80,
+                    "httpsPort": 443,
+                    "originCertificate": "",
+                    "originSni": true,
+                    "originType": "CUSTOMER",
+                    "ports": "",
+                    "trueClientIpClientSetting": false,
+                    "trueClientIpHeader": "True-Client-IP",
+                    "verificationMode": "PLATFORM_SETTINGS",
+                    "hostname": "${env.origin}"
+                }
+            }
+        ],
+        "options": {
+            "is_secure": false
+        },
+        "variables": [
+            {
+                "name": "PMUSER_ORIGIN",
+                "value": "dummy.origin.com",
+                "description": "",
+                "hidden": false,
+                "sensitive": false
+            }
+        ],
+        "comments": "The Default Rule template contains all the necessary and recommended behaviors. Rules are evaluated from top to bottom and the last matching rule wins."
+    }
+}

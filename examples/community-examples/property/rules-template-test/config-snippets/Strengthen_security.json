@@ -1,0 +1,170 @@
+{
+    "name": "Strengthen security",
+    "children": [
+        {
+            "name": "Allowed methods",
+            "children": [
+                {
+                    "name": "POST",
+                    "children": [],
+                    "behaviors": [
+                        {
+                            "name": "allowPost",
+                            "options": {
+                                "allowWithoutContentLength": false,
+                                "enabled": true
+                            }
+                        }
+                    ],
+                    "criteria": [],
+                    "criteriaMustSatisfy": "all",
+                    "comments": "Allow use of the POST HTTP request method."
+                },
+                {
+                    "name": "OPTIONS",
+                    "children": [],
+                    "behaviors": [
+                        {
+                            "name": "allowOptions",
+                            "options": {
+                                "enabled": true
+                            }
+                        }
+                    ],
+                    "criteria": [],
+                    "criteriaMustSatisfy": "all",
+                    "comments": "Allow use of the OPTIONS HTTP request method."
+                },
+                {
+                    "name": "PUT",
+                    "children": [],
+                    "behaviors": [
+                        {
+                            "name": "allowPut",
+                            "options": {
+                                "enabled": false
+                            }
+                        }
+                    ],
+                    "criteria": [],
+                    "criteriaMustSatisfy": "all",
+                    "comments": "Allow use of the PUT HTTP request method."
+                },
+                {
+                    "name": "DELETE",
+                    "children": [],
+                    "behaviors": [
+                        {
+                            "name": "allowDelete",
+                            "options": {
+                                "enabled": false
+                            }
+                        }
+                    ],
+                    "criteria": [],
+                    "criteriaMustSatisfy": "all",
+                    "comments": "Allow use of the DELETE HTTP request method."
+                },
+                {
+                    "name": "PATCH",
+                    "children": [],
+                    "behaviors": [
+                        {
+                            "name": "allowPatch",
+                            "options": {
+                                "enabled": false
+                            }
+                        }
+                    ],
+                    "criteria": [],
+                    "criteriaMustSatisfy": "all",
+                    "comments": "Allow use of the PATCH HTTP request method."
+                }
+            ],
+            "behaviors": [
+                {
+                    "name": "allHttpInCacheHierarchy",
+                    "options": {
+                        "enabled": true
+                    }
+                }
+            ],
+            "criteria": [],
+            "criteriaMustSatisfy": "all",
+            "comments": "Allow the use of HTTP methods. Consider enabling additional methods under a path match for increased origin security."
+        },
+        {
+            "name": "Obfuscate debug info",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "cacheTagVisible",
+                    "options": {
+                        "behavior": "PRAGMA_HEADER"
+                    }
+                }
+            ],
+            "criteria": [],
+            "criteriaMustSatisfy": "all",
+            "comments": "Do not expose back-end information unless the request contains the Pragma debug header."
+        },
+        {
+            "name": "Obfuscate backend info",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "modifyOutgoingResponseHeader",
+                    "options": {
+                        "action": "DELETE",
+                        "customHeaderName": "X-Powered-By",
+                        "standardDeleteHeaderName": "OTHER"
+                    }
+                },
+                {
+                    "name": "modifyOutgoingResponseHeader",
+                    "options": {
+                        "action": "DELETE",
+                        "customHeaderName": "Server",
+                        "standardDeleteHeaderName": "OTHER"
+                    }
+                }
+            ],
+            "criteria": [
+                {
+                    "name": "requestHeader",
+                    "options": {
+                        "headerName": "X-Akamai-Debug",
+                        "matchCaseSensitiveValue": true,
+                        "matchOperator": "IS_NOT_ONE_OF",
+                        "matchWildcardName": false,
+                        "matchWildcardValue": false,
+                        "values": [
+                            "true"
+                        ]
+                    }
+                }
+            ],
+            "criteriaMustSatisfy": "all",
+            "comments": "Do not expose back-end information unless the request contains an additional secret header. Regularly change the criteria to use a specific unique value for the secret header."
+        },
+        {
+            "name": "HSTS",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "httpStrictTransportSecurity",
+                    "options": {
+                        "enable": false
+                    }
+                }
+            ],
+            "criteria": [],
+            "criteriaMustSatisfy": "all",
+            "comments": "Require all browsers to connect to your site using HTTPS."
+        }
+    ],
+    "behaviors": [],
+    "criteria": [],
+    "criteriaMustSatisfy": "all",
+    "comments": "Control the settings that minimize the information your website shares with clients and malicious entities to reduce your exposure to threats."
+}

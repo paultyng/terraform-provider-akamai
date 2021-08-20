@@ -1,0 +1,99 @@
+{
+    "name": "Increase availability",
+    "children": [
+        {
+            "name": "Simulate failover",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "breakConnection",
+                    "options": {
+                        "enabled": true
+                    }
+                }
+            ],
+            "criteria": [
+                {
+                    "name": "contentDeliveryNetwork",
+                    "options": {
+                        "matchOperator": "IS",
+                        "network": "STAGING"
+                    }
+                },
+                {
+                    "name": "requestHeader",
+                    "options": {
+                        "headerName": "breakconnection",
+                        "matchCaseSensitiveValue": true,
+                        "matchOperator": "IS_ONE_OF",
+                        "matchWildcardName": false,
+                        "matchWildcardValue": false,
+                        "values": [
+                            "Your-Secret-Here"
+                        ]
+                    }
+                }
+            ],
+            "criteriaMustSatisfy": "all",
+            "comments": "Simulate an origin connection problem and test the site failover configuration on the CDN staging network."
+        },
+        {
+            "name": "Site failover",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "failAction",
+                    "options": {
+                        "enabled": false
+                    }
+                }
+            ],
+            "criteria": [
+                {
+                    "name": "originTimeout",
+                    "options": {
+                        "matchOperator": "ORIGIN_TIMED_OUT"
+                    }
+                }
+            ],
+            "criteriaMustSatisfy": "any",
+            "comments": "Specify how edge servers respond when the origin is not available."
+        },
+        {
+            "name": "Origin health",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "healthDetection",
+                    "options": {
+                        "maximumReconnects": 3,
+                        "retryCount": 3,
+                        "retryInterval": "10s"
+                    }
+                }
+            ],
+            "criteria": [],
+            "criteriaMustSatisfy": "all",
+            "comments": "Monitor the health of your origin by tracking unsuccessful IP connection attempts."
+        },
+        {
+            "name": "Script management",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "scriptManagement",
+                    "options": {
+                        "enabled": false
+                    }
+                }
+            ],
+            "criteria": [],
+            "criteriaMustSatisfy": "all",
+            "comments": "Enable Script Management to minimize performance and availability impacts from third-party JavaScripts."
+        }
+    ],
+    "behaviors": [],
+    "criteria": [],
+    "criteriaMustSatisfy": "all",
+    "comments": "Control how to respond when your origin or third parties are slow or even down to minimize the negative impact on user experience."
+}
