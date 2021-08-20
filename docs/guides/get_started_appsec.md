@@ -134,6 +134,7 @@ your `akamai.tf` file:
 ```hcl
 data "akamai_appsec_export_configuration" "export" {
   config_id = data.akamai_appsec_configuration.configuration.config_id
+  version = data.akamai_appsec_configuration.configuration.latest_version
   search = [
   "customRules",
   "selectedHosts"
