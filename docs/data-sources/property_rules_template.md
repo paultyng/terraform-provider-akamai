@@ -126,7 +126,7 @@ resource "akamai_property" "example" {
 * `template_file` - (Required) The absolute path to your top-level JSON template file. The top-level template combines smaller, nested JSON templates to form your property rule tree.
 * `variables` - (Optional) A definition of a variable. Variables aren't required and you can use multiple ones if needed. This argument conflicts with the `variable_definition_file` and `variable_values_file` arguments. A `variables` block includes:
     * `name` - The name of the variable used in template.
-    * `type` - The type of variable: `string`, `number`, `bool`, or `jsonBlock`.
+    * `type` - The type of variable: `string`, `number`, `bool`, `jsonArray` or `jsonBlock`.
     * `value` - The value of the variable passed as a string.
 * `variable_definition_file` - (Optional) The absolute path to the file containing variable definitions and defaults. This file follows the syntax used in the [Property Manager CLI](https://github.com/akamai/cli-property-manager). This argument is required if you set `variable_values_file` and conflicts with `variables`.
 * `variable_values_file` - (Optional) The absolute path to the file containing variable values. This file follows the syntax used in the Property Manager CLI. This argument is required if you set `variable_definition_file` and conflicts with `variables`.

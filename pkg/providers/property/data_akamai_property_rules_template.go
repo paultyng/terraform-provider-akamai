@@ -51,10 +51,10 @@ func dataSourcePropertyRulesTemplate() *schema.Resource {
 									return diag.Errorf("value is not a string: %v", i)
 								}
 								switch val {
-								case "bool", "number", "string", "jsonBlock":
+								case "bool", "number", "string", "jsonArray", "jsonBlock":
 									return nil
 								}
-								return diag.Errorf("'type' has invalid value: should be 'bool', 'number', 'string' or 'jsonBlock'")
+								return diag.Errorf("'type' has invalid value: should be 'bool', 'number', 'string', 'jsonArray' or 'jsonBlock'")
 							},
 						},
 						"value": {
@@ -263,6 +263,12 @@ func convertToTypedMap(vars []interface{}) (map[string]interface{}, error) {
 		switch varTypeStr {
 		case "string":
 			result[varNameStr] = fmt.Sprintf(`"%s"`, valueStr)
+		case "jsonArray":
+			var target []interface{}
+			if err := json.Unmarshal([]byte(valueStr), &target); err != nil {
+				return nil, fmt.Errorf("%w: 'jsonArray` argument is not a valid json object: %s: %s", ErrUnmarshal, varNameStr, valueStr)
+			}
+			result[varNameStr] = valueStr
 		case "jsonBlock":
 			var target map[string]interface{}
 			if err := json.Unmarshal([]byte(valueStr), &target); err != nil {
@@ -348,6 +354,12 @@ func formatValue(val interface{}) (interface{}, error) {
 			return nil, err
 		}
 		return string(jsonBlock), nil
+	case []interface{}:
+		jsonArray, err := json.Marshal(v)
+		if err != nil {
+			return nil, err
+		}
+		return string(jsonArray), nil
 	default:
 		return val, nil
 	}

@@ -83,7 +83,7 @@ func TestDataAkamaiPropertyRulesRead(t *testing.T) {
 				Steps: []resource.TestStep{
 					{
 						Config:      loadFixtureString("testdata/TestDSRulesTemplate/template_vars_invalid_type.tf"),
-						ExpectError: regexp.MustCompile(`'type' has invalid value: should be 'bool', 'number', 'string' or 'jsonBlock'`),
+						ExpectError: regexp.MustCompile(`'type' has invalid value: should be 'bool', 'number', 'string', 'jsonArray' or 'jsonBlock'`),
 					},
 				},
 			})
@@ -306,14 +306,16 @@ func TestConvertToTypedMap(t *testing.T) {
 			givenVars: []interface{}{
 				map[string]interface{}{"name": "testString", "type": "string", "value": "test"},
 				map[string]interface{}{"name": "testNum", "type": "number", "value": "1.23"},
-				map[string]interface{}{"name": "testJSON", "type": "jsonBlock", "value": `{"abc": "cba", "number":1}`},
+				map[string]interface{}{"name": "testJSONArray", "type": "jsonArray", "value": `[1, "two", false]`},
+				map[string]interface{}{"name": "testJSONBlock", "type": "jsonBlock", "value": `{"abc": "cba", "number":1}`},
 				map[string]interface{}{"name": "testBool", "type": "bool", "value": "true"},
 			},
 			expected: map[string]interface{}{
-				"testString": `"test"`,
-				"testNum":    1.23,
-				"testJSON":   `{"abc": "cba", "number":1}`,
-				"testBool":   true,
+				"testString":    `"test"`,
+				"testNum":       1.23,
+				"testJSONArray": `[1, "two", false]`,
+				"testJSONBlock": `{"abc": "cba", "number":1}`,
+				"testBool":      true,
 			},
 		},
 		"invalid values slice": {
@@ -355,6 +357,12 @@ func TestConvertToTypedMap(t *testing.T) {
 				map[string]interface{}{"name": "test", "type": "string", "value": 123},
 			},
 			withError: tools.ErrInvalidType,
+		},
+		"jsonArray has invalid json": {
+			givenVars: []interface{}{
+				map[string]interface{}{"name": "testJSON", "type": "jsonArray", "value": "abc"},
+			},
+			withError: ErrUnmarshal,
 		},
 		"jsonBlock has invalid json": {
 			givenVars: []interface{}{

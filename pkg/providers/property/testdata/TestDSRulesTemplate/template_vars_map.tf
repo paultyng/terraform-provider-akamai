@@ -20,6 +20,11 @@ data "akamai_property_rules_template" "test" {
     type = "bool"
   }
   variables {
+    name = "list"
+    value = "[\"foo\", \"bar\", \"baz\"]"
+    type = "jsonArray"
+  }
+  variables {
     name = "options"
     value = "{\"enabled\":true}"
     type = "jsonBlock"
