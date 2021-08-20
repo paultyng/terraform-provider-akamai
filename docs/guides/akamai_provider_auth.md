@@ -63,7 +63,7 @@ Terraform 0.13 and later:
 terraform {
   required_providers {
     akamai = {
-      source  = "hashicorp/akamai"
+      source  = "akamai/akamai"
     }
   }
 }
