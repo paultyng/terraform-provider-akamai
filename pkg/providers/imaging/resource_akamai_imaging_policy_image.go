@@ -62,7 +62,7 @@ func resourceImagingPolicyImage() *schema.Resource {
 				Type:        schema.TypeString,
 				Required:    true,
 				ForceNew:    true,
-				Description: "Unique identifier for a Policy. It is not possible to modify the id of the policy.",
+				Description: "Unique identifier for a Policy. It is not possible to modify the id of the policy. Use .auto to modify the default policy.",
 			},
 			"policyset_id": {
 				Type:        schema.TypeString,
