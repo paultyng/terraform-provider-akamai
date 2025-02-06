@@ -16,7 +16,7 @@ import (
 
 func dataSourceClientLists() *schema.Resource {
 	return &schema.Resource{
-		ReadContext: dataSourceClientListRead,
+		ReadContext: dataSourceClientListsRead,
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type:     schema.TypeString,
@@ -145,7 +145,7 @@ func dataSourceClientLists() *schema.Resource {
 	}
 }
 
-func dataSourceClientListRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+func dataSourceClientListsRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	meta := meta.Must(m)
 	client := inst.Client(meta)
 	logger := meta.Log("CLIENTLIST", "dataSourceClientListRead")

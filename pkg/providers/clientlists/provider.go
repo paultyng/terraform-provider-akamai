@@ -67,6 +67,7 @@ func (p *Subprovider) SDKResources() map[string]*schema.Resource {
 func (p *Subprovider) SDKDataSources() map[string]*schema.Resource {
 	return map[string]*schema.Resource{
 		"akamai_clientlist_lists": dataSourceClientLists(),
+		"akamai_clientlist_list":  dataSourceClientList(),
 	}
 }
 

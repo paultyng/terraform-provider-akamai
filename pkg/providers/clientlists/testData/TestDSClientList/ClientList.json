@@ -1,0 +1,103 @@
+{
+  "contractId": "ctr_test1",
+  "createDate": "2023-10-30T17:13:31.575+00:00",
+  "createdBy": "ccare2",
+  "deprecated": false,
+  "groupId": 12345,
+  "groupName": "group",
+  "items": [
+      {
+          "createDate": "2023-10-30T17:13:31.603+00:00",
+          "createdBy": "ccare2",
+          "description": "test item 1",
+          "productionStatus": "ACTIVE",
+          "stagingStatus": "ACTIVE",
+          "tags": [],
+          "type": "IP",
+          "updateDate": "2023-10-30T17:13:31.603+00:00",
+          "updatedBy": "ccare2",
+          "value": "107.23.127.59/32"
+      },
+      {
+          "createDate": "2023-10-30T17:13:31.603+00:00",
+          "createdBy": "ccare2",
+          "description": "test item 2",
+          "productionStatus": "ACTIVE",
+          "stagingStatus": "ACTIVE",
+          "tags": [],
+          "type": "IP",
+          "updateDate": "2023-10-30T17:13:31.603+00:00",
+          "updatedBy": "ccare2",
+          "value": "107.23.127.72/32"
+      },
+      {
+          "createDate": "2023-10-30T17:13:31.603+00:00",
+          "createdBy": "ccare2",
+          "description": "test item 3",
+          "productionStatus": "ACTIVE",
+          "stagingStatus": "ACTIVE",
+          "tags": [],
+          "type": "IP",
+          "updateDate": "2023-10-30T17:13:31.603+00:00",
+          "updatedBy": "ccare2",
+          "value": "54.246.130.100/32"
+      },
+      {
+          "createDate": "2023-10-30T17:13:31.603+00:00",
+          "createdBy": "ccare2",
+          "description": "test item 4",
+          "productionStatus": "ACTIVE",
+          "stagingStatus": "ACTIVE",
+          "tags": [],
+          "type": "IP",
+          "updateDate": "2023-10-30T17:13:31.603+00:00",
+          "updatedBy": "ccare2",
+          "value": "54.246.130.102/32"
+      },
+      {
+          "createDate": "2023-10-30T17:13:31.603+00:00",
+          "createdBy": "ccare2",
+          "description": "test item 5",
+          "productionStatus": "ACTIVE",
+          "stagingStatus": "ACTIVE",
+          "tags": [],
+          "type": "IP",
+          "updateDate": "2023-10-30T17:13:31.603+00:00",
+          "updatedBy": "ccare2",
+          "value": "54.246.130.105/32"
+      },
+      {
+          "createDate": "2023-10-30T17:13:31.603+00:00",
+          "createdBy": "ccare2",
+          "description": "test item 6",
+          "productionStatus": "ACTIVE",
+          "stagingStatus": "ACTIVE",
+          "tags": [],
+          "type": "IP",
+          "updateDate": "2023-10-30T17:13:31.603+00:00",
+          "updatedBy": "ccare2",
+          "value": "54.246.130.106/32"
+      }
+  ],
+  "itemsCount": 6,
+  "listId": "123_TEST",
+  "listType": "CL",
+  "name": "TEST",
+  "notes": "Test IP addresses",
+  "productionActivationStatus": "ACTIVE",
+  "productionActiveVersion": 1,
+  "readOnly": false,
+  "rollbackPossible": false,
+  "shared": false,
+  "stagingActivationStatus": "ACTIVE",
+  "stagingActiveVersion": 1,
+  "tags": [
+      "TEST-TAG-1",
+      "TEST-TAG-2"
+  ],
+  "type": "IP",
+  "updateDate": "2023-11-21T12:38:39.160+00:00",
+  "updatedBy": "ccare2",
+  "upgradedFromNetworkList": false,
+  "version": 1
+}
